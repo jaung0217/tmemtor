@@ -12,10 +12,7 @@ import { ScrollReveal } from "../ScrollReveal";
 const CATEGORIES = [
   { label: "Outerwear", seed: "tmentor-cat-outerwear", description: "코트·패딩·자켓 아우터 라인업" },
   { label: "Knitwear", seed: "tmentor-cat-knitwear", description: "니트·스웨터·가디건" },
-  { label: "Tailoring", seed: "tmentor-cat-tailoring", description: "블레이저·셋업·슬랙스" },
-  { label: "Shirts & Blouses", seed: "tmentor-cat-shirts", description: "셔츠·블라우스" },
-  { label: "Denim", seed: "tmentor-cat-denim", description: "데님 팬츠·자켓" },
-  { label: "Accessories", seed: "tmentor-cat-accessories", description: "머플러·벨트·소품" },
+  { label: "Shirts", seed: "tmentor-cat-shirts", description: "셔츠·블라우스" },
 ] as const;
 
 export function Collections() {
@@ -37,13 +34,13 @@ export function Collections() {
         </p>
       </ScrollReveal>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-3">
         {CATEGORIES.map((category, index) => (
           <ScrollReveal key={category.label} delay={(index % 3) * 100}>
-            <div className="group relative block aspect-[4/5] overflow-hidden bg-surface">
+            <div className="group relative block aspect-[2/3] overflow-hidden bg-surface">
               {/* TODO: 실제 한섬/LF 공급 제품 촬영 이미지 또는 라이선스 스톡 이미지로 교체 */}
               <Image
-                src={`https://picsum.photos/seed/${category.seed}/900/1125`}
+                src={`https://picsum.photos/seed/${category.seed}/600/900`}
                 alt={`${category.label} 카테고리`}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

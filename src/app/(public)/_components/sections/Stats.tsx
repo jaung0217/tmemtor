@@ -1,3 +1,4 @@
+import { CountUpNumber } from "../CountUpNumber";
 import { ScrollReveal } from "../ScrollReveal";
 
 /**
@@ -33,7 +34,7 @@ export function Stats() {
             <ScrollReveal key={stat.label} delay={index * 100}>
               <div className="flex h-full flex-col items-start justify-center gap-3 border-b border-background/15 px-2 py-12 sm:border-r sm:px-8">
                 <p className="font-display text-4xl sm:text-5xl">
-                  {stat.value}
+                  <CountUpNumber value={stat.value} />
                 </p>
                 <p className="text-xs uppercase tracking-[0.2em] text-background/60">
                   {stat.label}

@@ -7,6 +7,13 @@ import Image from "next/image";
  * a plain CSS animation defined in globals.css (`animate-hero-fade`),
  * staggered per element via `animationDelay`. No JS/IntersectionObserver
  * needed here — that is reserved for below-the-fold sections.
+ *
+ * Background motion: we have no rights to source an actual short video or
+ * GIF for this reference site, so instead of a static still we apply a
+ * pure-CSS Ken Burns effect (slow infinite scale/pan, `animate-hero-ken-burns`
+ * in globals.css) to the same still image — it reads as a "living" visual
+ * without any video asset. Disabled under `prefers-reduced-motion: reduce`
+ * (falls back to the static image, see the media query in globals.css).
  */
 export function Hero() {
   return (
@@ -17,7 +24,7 @@ export function Hero() {
         alt="tmentor B2B 의류 공급 컬렉션 비주얼"
         fill
         priority
-        className="object-cover"
+        className="animate-hero-ken-burns object-cover"
       />
       <div className="absolute inset-0 bg-black/35" />
 

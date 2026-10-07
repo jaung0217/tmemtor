@@ -71,3 +71,66 @@ html {
     animation: none;
   }
 }
+
+/* Hero background "video-like" motion (Ken Burns slow zoom/pan) — pure CSS,
+ * no actual video/GIF asset (license reasons, see Hero.tsx). */
+@keyframes hero-ken-burns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1.5%, -1.5%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-hero-ken-burns {
+  animation: hero-ken-burns 18s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-ken-burns {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Customers marquee (two rows scrolling opposite directions). Each row's
+ * content is duplicated in the markup and this animates exactly one copy's
+ * width (-50%) for a seamless loop. */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 32s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none;
+  }
+}
