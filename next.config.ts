@@ -2,6 +2,21 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // Public Website (src/app/(public)/*) uses Lorem Picsum placeholder
+  // imagery (CLAUDE.md image-sourcing rule) via next/image until real
+  // product photography / licensed stock images are available.
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
+      },
+    ],
+  },
   // cacheComponents (create-next-app's new default as of Next 16.4) is
   // incompatible with the `export const dynamic = "force-dynamic"` route
   // segment config used throughout the copied Admin CMS (site-factory,
