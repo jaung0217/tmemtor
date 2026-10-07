@@ -6,14 +6,14 @@ import { Footer } from "./_components/Footer";
  * route group so it never wraps `src/app/admin/*` (CLAUDE.md — Admin CMS
  * and Public Website are kept separate; no Admin link is ever exposed here).
  *
- * `/contact` (src/app/(public)/contact/page.tsx) calls the existing
- * `getSiteSettings()` Query Function, which opens a Supabase server client.
- * This project has no `.env.local` configured yet (intentional, per task
- * scope), so that call must never run during `next build`'s static
- * prerender pass. Forcing the whole `(public)` segment dynamic — the same
- * `export const dynamic = "force-dynamic"` pattern already used by
- * `src/app/admin/(dashboard)/layout.tsx` — keeps the build green regardless
- * of which public page ends up calling Supabase.
+ * `Footer` (src/app/(public)/_components/Footer.tsx, formerly the
+ * `/contact` route) calls the existing `getSiteSettings()` Query Function,
+ * which opens a Supabase server client. This project has no `.env.local`
+ * configured yet (intentional, per task scope), so that call must never run
+ * during `next build`'s static prerender pass. Forcing the whole `(public)`
+ * segment dynamic — the same `export const dynamic = "force-dynamic"`
+ * pattern already used by `src/app/admin/(dashboard)/layout.tsx` — keeps
+ * the build green regardless of which public page ends up calling Supabase.
  */
 export const dynamic = "force-dynamic";
 

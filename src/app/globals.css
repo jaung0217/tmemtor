@@ -30,3 +30,44 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/*
+ * One-page layout (REFERENCE_SITES.md "tmentor" v2): header nav / footer
+ * links are in-page anchors (`#about`, `#inquiry`, ...) — smooth-scrolling
+ * them is plain CSS, no JS needed.
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Hero load-in fade (see _components/sections/Hero.tsx). Scroll-triggered
+ * sections below the fold use the separate IntersectionObserver-based
+ * `ScrollReveal` component instead. */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade {
+  opacity: 0;
+  animation: hero-fade-in 0.9s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-fade {
+    opacity: 1;
+    animation: none;
+  }
+}
