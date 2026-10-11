@@ -1,4 +1,6 @@
-import { getSiteSettings } from "@/queries/settings";
+// SUPABASE-DISABLED: Supabase 미사용 중 — 재연결 시 주석 해제.
+// import { getSiteSettings } from "@/queries/settings";
+import type { SiteSettings } from "@/types/site-settings";
 
 /**
  * Public Website footer. Deliberately does not link to `/admin` (CLAUDE.md
@@ -20,7 +22,9 @@ export async function Footer() {
   // page down -- fall back to placeholder copy exactly like the `null`
   // case (RLS has no anon SELECT policy on site_settings) rather than
   // letting the error bubble up.
-  const settings = await getSiteSettings().catch(() => null);
+  // SUPABASE-DISABLED: 재연결 시 아래 주석 해제하고 `null` 대입 줄 삭제.
+  // const settings = await getSiteSettings().catch(() => null);
+  const settings = null as SiteSettings | null;
 
   const siteName = settings?.site_name ?? "tmentor";
   const email = settings?.contact_email ?? "contact@tmentor.example";

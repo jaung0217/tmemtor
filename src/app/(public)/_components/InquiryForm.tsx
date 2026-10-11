@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { createInquiry } from "@/actions/inquiries";
+// SUPABASE-DISABLED: Supabase 미사용 중 — 재연결 시 주석 해제.
+// import { createInquiry } from "@/actions/inquiries";
+
+// SUPABASE-DISABLED: 온라인 접수가 막혀 있는 동안 안내할 연락처 (Footer의 placeholder와 동일).
+const CONTACT_EMAIL = "contact@tmentor.example";
 
 const initialFormState = {
   name: "",
@@ -22,6 +26,8 @@ const initialFormState = {
  */
 export function InquiryForm() {
   const [form, setForm] = useState(initialFormState);
+  // SUPABASE-DISABLED: startTransition은 재연결 시 handleSubmit에서 다시 사용.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<
     { type: "success" | "error"; message: string } | null
@@ -31,26 +37,32 @@ export function InquiryForm() {
     e.preventDefault();
     setResult(null);
 
-    startTransition(async () => {
-      const response = await createInquiry({
-        name: form.name,
-        email: form.email || null,
-        phone: form.phone || null,
-        title: form.title,
-        content: form.content,
-        privacy_agreed: form.privacy_agreed,
-      });
-
-      if (response.success) {
-        setResult({
-          type: "success",
-          message: "문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.",
-        });
-        setForm(initialFormState);
-      } else {
-        setResult({ type: "error", message: response.error });
-      }
+    // SUPABASE-DISABLED: 재연결 시 아래 블록 삭제하고 그 아래 주석 해제.
+    setResult({
+      type: "error",
+      message: `현재 온라인 문의 접수를 준비 중입니다. ${CONTACT_EMAIL}로 문의해 주세요.`,
     });
+
+    // startTransition(async () => {
+    //   const response = await createInquiry({
+    //     name: form.name,
+    //     email: form.email || null,
+    //     phone: form.phone || null,
+    //     title: form.title,
+    //     content: form.content,
+    //     privacy_agreed: form.privacy_agreed,
+    //   });
+    //
+    //   if (response.success) {
+    //     setResult({
+    //       type: "success",
+    //       message: "문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.",
+    //     });
+    //     setForm(initialFormState);
+    //   } else {
+    //     setResult({ type: "error", message: response.error });
+    //   }
+    // });
   }
 
   return (

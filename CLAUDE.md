@@ -47,6 +47,7 @@ tmentor는 한섬·LF 등 국내 브랜드 의류를 매장/사업자에 납품�
 ## 현재 상태
 
 - **Supabase 프로젝트: 아직 미연결** (`.env.local`에 실제 값 없음 — 의도적으로 나중으로 미룸). `/admin`, Footer의 연락처 등 Supabase를 호출하는 부분은 연결 전까지 placeholder로 안전하게 fallback하도록 이미 처리되어 있다 (`Footer.tsx`의 `getSiteSettings().catch(() => null)` 패턴 참고 — Supabase 미설정으로 인한 에러가 페이지 전체를 500으로 떨어뜨리지 않게 항상 이 패턴을 유지한다).
+- **Supabase 호출 주석 처리 (2026-10-11)**: CRUD가 필요 없는 정적 회사소개 사이트로 운영하기로 해서, Public Website 경로의 Supabase 호출을 지우지 않고 주석 처리했다 — `src/proxy.ts`(세션 갱신/`/admin` 보호 → pass-through), `Footer.tsx`(`getSiteSettings` → 항상 placeholder), `InquiryForm.tsx`(`createInquiry` → 이메일 안내 메시지). 재연결 시 `SUPABASE-DISABLED`로 grep해서 주석을 해제한다. Admin CMS·`src/actions/`·`src/queries/`·`src/lib/supabase/`·migrations는 그대로 남아 있다 (`/admin`은 Supabase 없이는 동작하지 않음).
 - **Vercel: 아직 미연결.**
 - Collections(취급 카테고리)는 정적 데이터(`src/app/(public)/_components/sections/Collections.tsx` 내 배열)로만 구현되어 있고 DB 연동이 없다. 실제 Products 카탈로그를 DB로 관리할지는 아직 결정되지 않았다 (`PLANNING.md` 참고).
 

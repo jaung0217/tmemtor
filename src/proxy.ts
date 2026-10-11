@@ -1,8 +1,12 @@
-import { type NextRequest } from "next/server";
-import { updateSession } from "@/lib/supabase/middleware";
+import { NextResponse, type NextRequest } from "next/server";
+// SUPABASE-DISABLED: Supabase 미사용 중 — 재연결 시 아래 import와 proxy 본문 주석 해제.
+// import { updateSession } from "@/lib/supabase/middleware";
 
 export function proxy(request: NextRequest) {
-  return updateSession(request);
+  // SUPABASE-DISABLED: 세션 갱신 + /admin 보호. 재연결 시 아래 줄로 교체.
+  // return updateSession(request);
+  void request;
+  return NextResponse.next();
 }
 
 export const config = {
