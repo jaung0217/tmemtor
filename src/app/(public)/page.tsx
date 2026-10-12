@@ -1,6 +1,5 @@
 import { Hero } from "./_components/sections/Hero";
 import { About } from "./_components/sections/About";
-import { History } from "./_components/sections/History";
 import { Customers } from "./_components/sections/Customers";
 import { Collections } from "./_components/sections/Collections";
 import { InquirySection } from "./_components/sections/InquirySection";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <Hero />
       <Collections />
       <About />
-      <History />
       <Customers />
       <InquirySection />
     </>

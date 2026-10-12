@@ -6,8 +6,7 @@ import { useState } from "react";
 const NAV_LINKS = [
   { href: "#about", label: "서비스 소개" },
   { href: "#collections", label: "입고 상품" },
-  { href: "#history", label: "거래 프로세스" },
-  { href: "#customers", label: "파트너사례" },
+  { href: "#customers", label: "파트너 네트워크" },
   { href: "#inquiry", label: "문의하기" },
 ] as const;
 
