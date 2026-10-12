@@ -9,10 +9,10 @@
  */
 :root {
   --background: #ffffff;
-  --foreground: #141414;
-  --surface: #f7f5f2;
-  --border-subtle: #e5e1da;
-  --accent-beige: #c9bfae;
+  --foreground: #101114;
+  --surface: #f3f4f5;
+  --border-subtle: #dcdee2;
+  --accent-beige: #2459d7;
 }
 
 @theme inline {
@@ -61,8 +61,7 @@ html {
 }
 
 .animate-hero-fade {
-  opacity: 0;
-  animation: hero-fade-in 0.9s ease-out forwards;
+  animation: hero-fade-in 0.8s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
