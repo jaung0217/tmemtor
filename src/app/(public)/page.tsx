@@ -1,7 +1,6 @@
 import { Hero } from "./_components/sections/Hero";
 import { About } from "./_components/sections/About";
 import { History } from "./_components/sections/History";
-import { Stats } from "./_components/sections/Stats";
 import { Customers } from "./_components/sections/Customers";
 import { Collections } from "./_components/sections/Collections";
 import { InquirySection } from "./_components/sections/InquirySection";
@@ -18,11 +17,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Collections />
       <About />
       <History />
-      <Stats />
       <Customers />
-      <Collections />
       <InquirySection />
     </>
   );

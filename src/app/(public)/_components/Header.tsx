@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { href: "#about", label: "회사 소개" },
-  { href: "#collections", label: "취급 상품" },
+  { href: "#about", label: "서비스 소개" },
+  { href: "#collections", label: "입고 상품" },
   { href: "#history", label: "거래 프로세스" },
+  { href: "#customers", label: "파트너사례" },
   { href: "#inquiry", label: "문의하기" },
 ] as const;
 
